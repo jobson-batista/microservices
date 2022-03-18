@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.lang.Thread;
 
 import com.jobson.hrworker.entities.Worker;
 import com.jobson.hrworker.repositories.WorkerRepository;
@@ -34,7 +35,15 @@ public class WorkerResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Worker> findById(@PathVariable Long id){
+	public ResponseEntity<Worker> findById(@PathVariable Long id) throws InterruptedException{
+		
+		/*
+		try {
+			Thread.sleep(3000L);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}*/
 		
 		logger.info("PORT = " + env.getProperty("local.server.port"));
 		
